@@ -5,6 +5,10 @@ html {
   font-family: $font-family-sans-serif
 }
 
+.flex {
+  display: flex;
+}
+
 .MuiButtonBase-root { }
 .MuiButton-root { }
 .MuiButton-label { }
