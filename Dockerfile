@@ -9,5 +9,5 @@ WORKDIR /var/app
 RUN gem install bundler:2.2.18
 RUN bundle install
 
-CMD rails s -b 0.0.0.0
+CMD rails s -b 0.0.0.0 --pid /var/tmp/rails.pid
 

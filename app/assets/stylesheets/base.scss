@@ -1,11 +1,15 @@
-$font-family-sans-serif: -apple-system, 'Noto Sans', 'Helvetica Nueue', Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif: -apple-system, "Roboto", "Helvetica", "Arial", sans-serif !default;
 $font-family-monospace: -apple-system, 'Source Code Pro', monospace;
 
-.header {
-  align-items: center;
-  background-color: lightskyblue;
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  padding: 1em;
+html {
+  font-family: $font-family-sans-serif
 }
+
+.MuiButtonBase-root { }
+.MuiButton-root { }
+.MuiButton-label { }
+.MuiButton-text { }
+.MuiButton-outlined { }
+.MuiButton-outlined.Mui-disabled { }
+.MuiButton-outlinedPrimary { }
+.MuiButton-outlinedPrimary:hover { }

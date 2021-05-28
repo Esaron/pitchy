@@ -6,6 +6,17 @@ services:
     volumes:
       - .:/var/app
       - logs:/var/log
+      - tmp:/var/app/tmp
+  database:
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    env_file:
+      - config/database.env
+    volumes:
+      - data:/var/lib/postgresql/data/
 volumes:
   logs: {}
+  data: {}
+  tmp: {}
 

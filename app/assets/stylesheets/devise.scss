@@ -1,0 +1,28 @@
+input[name="commit"], a[href="/users/sign_in"], a[href="/users/sign_up"], a[href="/users/password/new"] {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 0;
+  box-sizing: border-box;
+  color: blue;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  justify-content: center;
+  letter-spacing: 0.02857em;
+  line-height: 1.75;
+  margin: 0;
+  min-width: 64px;
+  outline: 0;
+  padding: 6px 8px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  user-select: none;
+  vertical-align: middle;
+}

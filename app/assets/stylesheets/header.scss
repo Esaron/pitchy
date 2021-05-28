@@ -1,0 +1,19 @@
+.header {
+  align-items: center;
+  background-color: black;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1em;
+}
+
+a.account-button {
+  color: #EFEFEF;
+}
+
+a.home-link {
+  color: #EFEFEF;
+  font-size: 1.5em;
+  text-decoration: none;
+}
