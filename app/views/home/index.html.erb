@@ -1,6 +1,8 @@
-<h2>Projects</h2>
+<h2>Recent Projects</h2>
 
 <ul>
-  <li>some stuff</li>
+  <% @projects.each do |project| %>
+    <li><%= project.name %></li>
+  <% end %>
 </ul>
 

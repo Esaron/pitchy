@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :users, param: :username, only: [:show]
+  resources :users, param: :email, only: [:show]
 end

@@ -1,5 +1,16 @@
-<h2>My Projects</h2>
+<h2>Projects created by <%= @email %></h2>
+<a href="/projects/new">New</a>
 
+<ul>
+  <% @projects.each do |project| %>
+    <li><%= project.name %></li>
+  <% end %>
+</ul>
 
+<h2><%= @email %> Likes</h2>
 
-<h2>Liked Projects</h2>
+<ul>
+  <% @likes.each do |like| %>
+    <li><%= like.project.name %></li>
+  <% end %>
+</ul>
