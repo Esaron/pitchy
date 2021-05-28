@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :users, param: :email, only: [:show]
+  resources :projects, param: :name, only: [:new, :create, :show, :update, :delete]
 end

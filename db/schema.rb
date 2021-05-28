@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_163632) do
+ActiveRecord::Schema.define(version: 2021_05_28_181056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2021_05_28_163632) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "pitch_decks", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_pitch_decks_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
@@ -31,6 +38,14 @@ ActiveRecord::Schema.define(version: 2021_05_28_163632) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "slides", force: :cascade do |t|
+    t.bigint "pitch_deck_id", null: false
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pitch_deck_id"], name: "index_slides_on_pitch_deck_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +62,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_163632) do
 
   add_foreign_key "likes", "projects"
   add_foreign_key "likes", "users"
+  add_foreign_key "pitch_decks", "projects"
   add_foreign_key "projects", "users"
+  add_foreign_key "slides", "pitch_decks"
 end
