@@ -1,0 +1,11 @@
+$font-family-sans-serif: -apple-system, 'Noto Sans', 'Helvetica Nueue', Helvetica, Arial, sans-serif !default;
+$font-family-monospace: -apple-system, 'Source Code Pro', monospace;
+
+.header {
+  align-items: center;
+  background-color: lightskyblue;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1em;
+}
