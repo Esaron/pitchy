@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :users, param: :email, only: [:show]
-  resources :projects, param: :name, only: [:new, :create, :show, :update, :delete]
+  resources :projects, param: :name, only: [:new, :create, :show, :update, :delete] do
+    post 'likes/toggle', to: 'likes#toggle'
+    post :update, on: :member
+  end
 end

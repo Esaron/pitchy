@@ -1,3 +1,9 @@
 .project-form {
-
+  .form-field {
+    display: block;
+  }
+  .project-actions {
+    display: inline-flex;
+    justify-content: end;
+  }
 }

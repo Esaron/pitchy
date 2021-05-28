@@ -1,34 +1,45 @@
 class ProjectsController < ProtectedController
-  before_action :check_ownership, only: [:show, :update]
-  before_action :project, only: [:show, :update]
+  before_action :owned_by_user?, only: [:show]
+  before_action :liked, only: [:show, :update]
 
   def new
   end
 
   def create
-    @project = Project.create!(project_params.merge!(user: current_user))
+    @project = Project.create!(project_params.merge!(creator: current_user))
     create_and_upload_slides
 
-    redirect_to :show
+    redirect_to action: :show, name: @project.name
   end
 
   def show
+    head :not_found if project.blank?
   end
 
   def update
-    @project = Project.update!(description: project_params[:description], user: current_user)
+    return head :not_found unless owned_by_user?
 
-    redirect_to :show
+    project.update!(description: project_params[:description])
+
+    redirect_to action: :show, name: project.name
   end
 
   private
+
+  def create_and_upload_slides
+    # do some actual work
+  end
 
   def project
     @project ||= Project.find_by(name: project_params[:name])
   end
 
-  def check_ownership
-    @owned_by_user ||= current_user == project.user
+  def liked
+    @liked ||= project.likes.exists?(user: current_user)
+  end
+
+  def owned_by_user?
+    @owned_by_user ||= current_user == project.creator
   end
 
   def project_params
