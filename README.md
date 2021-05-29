@@ -24,7 +24,7 @@ It takes a while. I included too many Rails pieces when I generated the project 
 ```sh
 git clone https://github.com/esaron/pitchy
 cd pitchy
-sudo docker compose up -d # You don't always need sudo, but for Ubuntu you might
+sudo docker-compose up -d # You don't always need sudo, but for Ubuntu you might
 # Open localhost:3000 in your browser
 # Sign up with a new email:password or log in with the pre-seeded one (a@a:admina)
 # Click on Profile in the top right
