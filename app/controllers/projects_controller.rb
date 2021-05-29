@@ -1,5 +1,6 @@
-class ProjectsController < ProtectedController
-  before_action :owned_by_user?, only: [:show]
+class ProjectsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+  before_action :owned_by_user, only: [:show]
   before_action :liked, only: [:show, :update]
 
   def new
@@ -17,7 +18,7 @@ class ProjectsController < ProtectedController
   end
 
   def update
-    return head :not_found unless owned_by_user?
+    return head :not_found unless owned_by_user
 
     project.update!(description: project_params[:description])
 
@@ -38,7 +39,7 @@ class ProjectsController < ProtectedController
     @liked ||= project.likes.exists?(user: current_user)
   end
 
-  def owned_by_user?
+  def owned_by_user
     @owned_by_user ||= current_user == project.creator
   end
 

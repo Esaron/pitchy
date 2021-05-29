@@ -21,14 +21,15 @@ const ProjectForm = props => (
                id="project-description"
                name="description"
                label="Description"
+               disabled={props.id && !props.ownedByUser}
                defaultValue={props.description}
                multiline={true} />
     <input type="hidden" name="authenticity_token" value={props.token} />
     <div className="project-actions">
-      <Button className="form-field" type="submit">
+      {(!props.id || props.ownedByUser) ? <Button className="form-field" type="submit">
         Save
-      </Button>
-      {!!props.id ? <LikeButton name={props.name} liked={props.liked} /> : null}
+      </Button> : null}
+      {(props.id && props.loggedIn) ? <LikeButton name={props.name} liked={props.liked} /> : null}
     </div>
   </form>
 )
@@ -39,6 +40,7 @@ ProjectForm.defaultProps = {
   description: null,
   ownedByUser: false,
   liked: false,
+  loggedIn: false,
 }
 
 ProjectForm.propTypes = {
@@ -47,6 +49,7 @@ ProjectForm.propTypes = {
   description: PropTypes.string,
   ownedByUser: PropTypes.bool,
   liked: PropTypes.bool,
+  loggedIn: PropTypes.bool,
   token: PropTypes.string,
 }
 

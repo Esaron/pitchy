@@ -1,8 +1,9 @@
-<h2>Show Project</h2>
+<h2><%= @project&.name %></h2>
 
-<%= react_component 'ProjectForm', { id: @project&.id,
-                                     name: @project&.name,
-                                     description: @project&.description,
-                                     ownedByUser: @ownedByUser,
+<%= react_component 'ProjectForm', { id: @project.id,
+                                     name: @project.name,
+                                     description: @project.description,
+                                     ownedByUser: @owned_by_user,
                                      liked: @liked,
+                                     loggedIn: current_user.present?,
                                      token: form_authenticity_token } %>

@@ -1,9 +1,11 @@
 <h2>Projects created by <%= @email %></h2>
-<a href="/projects/new">New</a>
+<% if current_user == @user %>
+  <a href="/projects/new">New</a>
+<% end %>
 
 <ul>
   <% @projects.each do |project| %>
-    <li><%= project.name %></li>
+    <li><a href="/projects/<%= project.name %>"><%= project.name %></a></li>
   <% end %>
 </ul>
 
@@ -11,6 +13,6 @@
 
 <ul>
   <% @likes.each do |like| %>
-    <li><%= like.project.name %></li>
+    <li><a href="/projects/<%= like.project.name %>"><%= like.project.name %></a></li>
   <% end %>
 </ul>
