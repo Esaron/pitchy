@@ -14,7 +14,7 @@ class LikeButton extends React.Component {
   }
 
   async toggleLike() {
-    await axios.post(`${projectBasePath}/${this.props.name}/likes/toggle`)
+    await axios.post(`${projectBasePath}/${this.props.projectName}/likes/toggle`)
     this.setState({ liked: !this.state.liked })
   }
 
@@ -28,12 +28,12 @@ class LikeButton extends React.Component {
 }
 
 LikeButton.defaultProps = {
-  project_name: null,
+  projectName: null,
   liked: false,
 }
 
 LikeButton.propTypes = {
-  name: PropTypes.string,
+  projectName: PropTypes.string,
   liked: PropTypes.bool,
 }
 

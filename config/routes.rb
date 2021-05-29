@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :projects, param: :name, only: [:new, :create, :show, :update, :delete] do
     post 'likes/toggle', to: 'likes#toggle'
     post :update, on: :member
+    resources :slides, param: :url, only: [:index, :show]
   end
 end

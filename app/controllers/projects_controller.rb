@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
         pitch_deck = PitchDeck.create!(project: project, file: project_params[:pitch_deck])
         file_path = pitch_deck.file.current_path
         if ['.docx', '.pptx'].include? File.extname(file_path)
-          create_slides pitch_deck, Docsplit.extract_images(file_path, formats: [:png]).first
+          create_slides pitch_deck, Docsplit.extract_images(file_path, output: '/tmp').first
         else
           create_slides pitch_deck, file_path
         end
