@@ -7,7 +7,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create!(project_params.merge!(creator: current_user))
+    @project = Project.create!(creator: current_user,
+                               name: project_params[:name],
+                               description: project_params[:description])
     create_and_upload_files
 
     redirect_to action: :show, name: @project.name
