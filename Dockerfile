@@ -10,7 +10,6 @@ WORKDIR /var/app
 
 RUN gem install bundler:2.2.18
 RUN bundle install
-RUN yarn install
 
 COPY . /var/app
 
