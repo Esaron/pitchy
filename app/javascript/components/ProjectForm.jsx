@@ -5,12 +5,21 @@ import LikeButton from "./LikeButton";
 
 const projectBasePath = '/projects'
 
+function readFile(files) {
+  if (files && files[0]) {
+    let fileUpload = new FormData();
+    fileUpload.append('uploaded_image', files[0]);
+    this.sendImageToController(formPayLoad)
+  }
+}
+
 const ProjectForm = props => (
   <form id="project-form"
         className="project-form"
         autoComplete="off"
         method="post"
-        action={`${projectBasePath}/${props.id ? props.name : ''}`}>
+        action={`${projectBasePath}/${props.id ? props.name : ''}`}
+        encType="multipart/form-data">
     <TextField className="form-field"
                id="project-name"
                name="name"
@@ -24,6 +33,12 @@ const ProjectForm = props => (
                disabled={props.id && !props.ownedByUser}
                defaultValue={props.description}
                multiline={true} />
+    <TextField className="form-field"
+               id="pitch-deck"
+               name="pitch_deck"
+               label="Pitch Deck"
+               disabled={props.id && !props.ownedByUser}
+               type="file" />
     <input type="hidden" name="authenticity_token" value={props.token} />
     <div className="project-actions">
       {(!props.id || props.ownedByUser) ? <Button className="form-field" type="submit">

@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
     return head :not_found unless owned_by_user
 
     project.update!(description: project_params[:description])
+    create_and_upload_slides
 
     redirect_to action: :show, name: project.name
   end
@@ -28,7 +29,9 @@ class ProjectsController < ApplicationController
   private
 
   def create_and_upload_slides
-    # do some actual work
+    if project_params[:pitch_deck].present?
+      PitchDeck.create!(project: project, file: project_params[:pitch_deck])
+    end
   end
 
   def project
@@ -44,7 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.permit(:name, :description)
+    params.permit(:name, :description, :pitch_deck)
   end
 end
 
