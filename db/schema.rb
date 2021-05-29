@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_181056) do
 
   create_table "pitch_decks", force: :cascade do |t|
     t.bigint "project_id", null: false
+    t.string "file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_pitch_decks_on_project_id"
