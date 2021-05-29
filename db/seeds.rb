@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(email: 'a@a', password: 'admina', password_confirmation: 'admina')
+project = Project.create(name: 'Pitchy', description: 'This app', creator: user)
+Like.create(user: user, project: project)
+PitchDeck.create(project: project)

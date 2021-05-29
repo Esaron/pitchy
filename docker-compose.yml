@@ -14,9 +14,7 @@ services:
     volumes:
       - .:/var/app
       - logs:/var/log
-      - tmp:/var/app/tmp
 volumes:
   logs: {}
   data: {}
-  tmp: {}
 
