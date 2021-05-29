@@ -22,7 +22,7 @@ I hate these kinds of projects because I always end up moving too fast and leavi
 ```sh
 git clone https://github.com/esaron/pitchy
 cd pitchy
-docker compose up -d
+sudo docker compose up -d # You don't always need sudo, but for Ubuntu you might
 # Open localhost:3000 in your browser
 # Sign up with a new email:password or log in with the pre-seeded one (a@a:admina)
 # Click on Profile in the top right
