@@ -19,6 +19,8 @@ I hate these kinds of projects because I always end up moving too fast and leavi
 
 #### Running
 
+It takes a while. I included too many Rails pieces when I generated the project and I could probably eliminate a couple dependencies.
+
 ```sh
 git clone https://github.com/esaron/pitchy
 cd pitchy
