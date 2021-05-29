@@ -1,12 +1,4 @@
 services:
-  web:
-    build: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/var/app
-      - logs:/var/log
-      - tmp:/var/app/tmp
   database:
     image: "postgres"
     ports:
@@ -15,6 +7,14 @@ services:
       - config/database.env
     volumes:
       - data:/var/lib/postgresql/data/
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/app
+      - logs:/var/log
+      - tmp:/var/app/tmp
 volumes:
   logs: {}
   data: {}
