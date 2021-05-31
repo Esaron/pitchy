@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_181056) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_likes_on_project_id"
+    t.index ["user_id", "project_id"], name: "index_likes_on_user_id_and_project_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_181056) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_projects_on_name", unique: true
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
