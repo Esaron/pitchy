@@ -1,10 +1,6 @@
 class SlidesController < ApplicationController
   def index
-    render json: { urls: project.current_pitch_deck.slides.map{ |slide| slide.image.url } }
-  end
-
-  def show
-    send_file(slide_params[:url])
+    render json: { urls: project.current_pitch_deck&.slide_image_urls || [] }
   end
 
   private

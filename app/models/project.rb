@@ -3,6 +3,9 @@ class Project < ApplicationRecord
   has_many :pitch_decks
   has_many :likes
 
+  validates :creator, presence: true
+  validates :name, presence: true
+
   def current_pitch_deck
     pitch_decks.order(created_at: :desc).take
   end

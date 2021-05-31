@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
     @project = Project.create!(creator: current_user,
                                name: project_params[:name],
                                description: project_params[:description])
-    create_and_upload_files
+    create_pitch_deck
 
     redirect_to action: :show, name: @project.name
   end
@@ -23,34 +23,16 @@ class ProjectsController < ApplicationController
     return head :not_found unless owned_by_user
 
     project.update!(description: project_params[:description])
-    create_and_upload_files
+    create_pitch_deck
 
     redirect_to action: :show, name: project.name
   end
 
   private
 
-  def create_and_upload_files
+  def create_pitch_deck
     if project_params[:pitch_deck].present?
-      PitchDeck.transaction do
-        pitch_deck = PitchDeck.create!(project: project, file: project_params[:pitch_deck])
-        file_path = pitch_deck.file.current_path
-        if ['.docx', '.pptx'].include? File.extname(file_path)
-          create_slides pitch_deck, Docsplit.extract_images(file_path, output: '/tmp').first
-        else
-          create_slides pitch_deck, file_path
-        end
-      end
-    end
-  end
-
-  def create_slides(pitch_deck, pitch_deck_file)
-    image = MiniMagick::Image.open(pitch_deck_file)
-    image.pages.each do |page|
-      page.format 'png'
-      page.background 'white'
-      page.flatten
-      Slide.create!(pitch_deck: pitch_deck, image: page)
+      PitchDeck.create!(project: project, file: project_params[:pitch_deck])
     end
   end
 
